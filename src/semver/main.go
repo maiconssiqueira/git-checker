@@ -17,8 +17,8 @@ func main() {
 func SemVer(a string) bool {
 
 	result := false
-	semverProd, _ := regexp.MatchString("^([0-9]+.[0-9.].[0-9])$", a)
-	semverDev, _ := regexp.MatchString("^([0-9]+.[0-9.]+.[0-9]+-rc.[0-9])$", a)
+	semverProd, _ := regexp.MatchString("^([0-9]+)(\\.[0-9.])(\\.[0-9]+)$", a)
+	semverDev, _ := regexp.MatchString("^([0-9]+)(\\.[0-9.]+)(\\.[0-9]+)(\\-rc\\.[0-9])$", a)
 
 	if semverProd {
 		result = true

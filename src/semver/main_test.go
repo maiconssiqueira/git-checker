@@ -21,6 +21,16 @@ func Test_SemVer(t *testing.T) {
 		want := true
 		assertCorrectMessage(t, got, want)
 	})
+	t.Run("Error tagging w/ extra field", func(t *testing.T) {
+		got := SemVer("1.1.1.1")
+		want := false
+		assertCorrectMessage(t, got, want)
+	})
+	t.Run("Error tagging w/ wrong delimiter", func(t *testing.T) {
+		got := SemVer("1.1.1-rc-1")
+		want := false
+		assertCorrectMessage(t, got, want)
+	})
 	t.Run("Error tagging", func(t *testing.T) {
 		got := SemVer("feature/bool")
 		want := false
