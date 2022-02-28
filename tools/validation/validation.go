@@ -1,19 +1,8 @@
-package main
+package validation
 
 import (
-	"fmt"
-	"os"
 	"regexp"
 )
-
-func main() {
-
-	tag := os.Getenv("GIT_REPO_TAG")
-
-	matched := RegexValidation(tag)
-	environ := EnvValidation(tag)
-	fmt.Printf("This branch is ok: %t \nFor this environment: %s \n", matched, environ)
-}
 
 func RegexValidation(a string) bool {
 	result := false
