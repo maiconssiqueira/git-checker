@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"local/src/validation"
 	"os"
-	"validation"
 )
 
 func main() {
