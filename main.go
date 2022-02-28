@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"local/src/inventory"
 	"local/src/validation"
 	"os"
 )
@@ -12,6 +13,10 @@ func main() {
 
 	matched := validation.RegexValidation(tag)
 	environ := validation.EnvValidation(tag)
+	commiter := inventory.CommitAuthor()
+	commitId := inventory.CommitId()
+	repoName := inventory.RepoName()
 
-	fmt.Printf("This branch is ok: %t \nFor this environment: %s \n", matched, environ)
+	fmt.Printf("\nRepository: %s \nCommit ID: %s \nCommit Author: %s \n\nBranch is ok: %t \n\nEnvironment: %s \n",
+		repoName, commitId, commiter, matched, environ)
 }
