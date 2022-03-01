@@ -1,6 +1,7 @@
 package validation
 
 import (
+	"log"
 	"regexp"
 )
 
@@ -8,12 +9,13 @@ func RegexValidation(tag string) bool {
 	result := false
 	semver, _ := regexp.MatchString("^([0-9]+)(\\.[0-9]+)(\\.[0-9])(|\\-rc\\.[0-9])$", tag)
 
-	if semver {
-		result = true
+	if !semver {
+		log.Fatal("Tag is not correct.")
 	} else {
-		result = false
+		result = semver
 	}
 	return result
+
 }
 
 func EnvValidation(tag string) string {
