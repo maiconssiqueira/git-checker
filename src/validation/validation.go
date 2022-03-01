@@ -4,9 +4,9 @@ import (
 	"regexp"
 )
 
-func RegexValidation(a string) bool {
+func RegexValidation(tag string) bool {
 	result := false
-	semver, _ := regexp.MatchString("^([0-9]+)(\\.[0-9]+)(\\.[0-9])(|\\-rc\\.[0-9])$", a)
+	semver, _ := regexp.MatchString("^([0-9]+)(\\.[0-9]+)(\\.[0-9])(|\\-rc\\.[0-9])$", tag)
 
 	if semver {
 		result = true
@@ -16,10 +16,10 @@ func RegexValidation(a string) bool {
 	return result
 }
 
-func EnvValidation(a string) string {
+func EnvValidation(tag string) string {
 	result := "dev"
-	envProd, _ := regexp.MatchString("^([0-9]+)(\\.[0-9]+)(\\.[0-9])$", a)
-	envDev, _ := regexp.MatchString("^([0-9]+)(\\.[0-9]+)(\\.[0-9])(\\-rc\\.[0-9])$", a)
+	envProd, _ := regexp.MatchString("^([0-9]+)(\\.[0-9]+)(\\.[0-9])$", tag)
+	envDev, _ := regexp.MatchString("^([0-9]+)(\\.[0-9]+)(\\.[0-9])(\\-rc\\.[0-9])$", tag)
 
 	if envProd {
 		result = "prod"
