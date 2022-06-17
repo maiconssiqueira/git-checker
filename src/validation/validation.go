@@ -10,7 +10,7 @@ func RegexValidation(tag string) bool {
 	semver, _ := regexp.MatchString("^([0-9]+)(\\.[0-9]+)(\\.[0-9])(|\\-rc\\.[0-9])$", tag)
 
 	if !semver {
-		log.Fatal("Tag is not correct.")
+		log.Fatalf("This %s is not a valid tag.", tag)
 	} else {
 		result = semver
 	}

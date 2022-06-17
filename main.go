@@ -2,17 +2,23 @@ package main
 
 import (
 	"fmt"
-	"local/src/command"
-	"local/src/tekton"
-	"local/src/validation"
+	"https://github.com/maiconssiqueira/git-checker/main/src/command"
+	"https://github.com/maiconssiqueira/git-checker/main/src/tekton"
+	"https://github.com/maiconssiqueira/git-checker/main/src/command/validation"
+	"log"
 	"os"
 	"strconv"
 	"strings"
 )
 
 func main() {
+	tag := ""
 
-	tag := os.Args[1]
+	if len(os.Args) > 1 {
+		tag = os.Args[1]
+	} else {
+		log.Fatal("Need a valid tag to continue. Try including a tag in the excution arguments.")
+	}
 
 	gitElements := map[string]string{
 		"commiter": "git log --pretty=format:\"%an: %ae\" --max-count=1",
